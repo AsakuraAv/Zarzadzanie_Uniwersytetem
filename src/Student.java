@@ -4,12 +4,12 @@ import java.util.List;
 public class Student {
     private String studentName;
     private int id;
-    private List<Course> enrolledCourses;
+    private List<Enrollment> enrollments;
 
     public Student(String studentName, int id) {
         this.studentName = studentName;
         this.id = id;
-        enrolledCourses = new ArrayList<>();
+        enrollments = new ArrayList<>();
     }
 
     public String getStudentName() {
@@ -20,46 +20,44 @@ public class Student {
         return id;
     }
 
-    public void addCourse(Course course) {
-        if (course == null) {
-            System.out.println("Course cannot be null");
+    public void addEnrollment(Enrollment enrollment) {
+        if (enrollment == null) {
+            System.out.println("Enrollement cannot be null");
             return;
         }
 
-        if (enrolledCourses.contains(course)) {
-            System.out.println("This student is already added to the list in this course");
+        if (enrollments.contains(enrollment)) {
+            System.out.println("This student is already enrolled in this course");
         }
         else {
-            enrolledCourses.add(course);
-            course.addStudent(this);
-            System.out.println("Added course " + course.getCourseName());
+            enrollments.add(enrollment);
+            System.out.println("Added enrollment for course " + enrollment.getCourse().getCourseName());
         }
     }
 
-    public void removeCourse(Course course) {
-        if (course == null) {
-            System.out.println("Course cannot be null");
+    public void removeEnrollment(Enrollment enrollment) {
+        if (enrollment == null) {
+            System.out.println("Enrollement cannot be null");
             return;
         }
 
-        if (enrolledCourses.contains(course)) {
-            enrolledCourses.remove(course);
-            course.removeStudent(this);
-            System.out.println("Removed course " + course.getCourseName());
+        if (enrollments.contains(enrollment)) {
+            enrollments.remove(enrollment);
+            System.out.println("Removed enrollment for course " + enrollment.getCourse().getCourseName());
         }
         else {
-            System.out.println("This student is not added to the list in this course");
+            System.out.println("This student is not enrolled in this course");
         }
     }
 
     public void displayCourses() {
-        if (enrolledCourses.isEmpty()) {
-            System.out.println("There are no courses in this list.");
+        if (enrollments.isEmpty()) {
+            System.out.println(studentName + " is not enrolled in any courses.");
             return;
         }
 
-        for (Course course : enrolledCourses) {
-            System.out.println(course.getCourseName());
+        for (Enrollment enrollment : enrollments) {
+            System.out.println(enrollment.getCourse().getCourseName());
         }
     }
 

@@ -5,13 +5,13 @@ public class Course {
     private String courseName;
     private int capacity;
     private Professor professor;
-    private List<Student> enrolledStudents;
+    private List<Enrollment> enrollments;
 
     public Course(String courseName, int capacity, Professor professor) {
         this.courseName = courseName;
         this.capacity = capacity;
         this.professor = professor;
-        enrolledStudents = new ArrayList<>();
+        enrollments = new ArrayList<>();
     }
 
     public String getCourseName() {
@@ -26,49 +26,74 @@ public class Course {
         return professor;
     }
 
-    public void addStudent(Student student) {
-        if (enrolledStudents == null) {
-            System.out.println("Student cannot be null.");
-        }
-
-        if (enrolledStudents.size() >= capacity) {
-            System.out.println("Course is full.");
-        }
-
-        if (enrolledStudents.contains(student)) {
-            System.out.println("Student is already add in this course.");
-        }
-        else {
-            enrolledStudents.add(student);
-            student.addCourse(this);
-            System.out.println("Student "  + student.getStudentName() + "added for course.");
-        }
-    }
-
-    public void removeStudent(Student student) {
-        if (enrolledStudents == null) {
+    public void enrollStudent(Student student) {
+        if (student == null) {
             System.out.println("Student cannot be null.");
             return;
         }
 
-        if (enrolledStudents.contains(student)) {
-            enrolledStudents.remove(student);
-            student.removeCourse(this);
-            System.out.println("Student " + student.getStudentName() + "removed from course.");
+        if (enrollments.size() >= capacity) {
+            System.out.println("Course is full.");
+            return;
+        }
+
+        for (Enrollment enrollment : enrollments) {
+            if (enrollment.getStudent().equals(student)) {
+                System.out.println("Student is already add in this course.");
+                return;
+            }
+        }
+
+        Enrollment enrollment = new Enrollment(student, this);
+        enrollments.add(enrollment);
+        student.addEnrollment(enrollment);
+        System.out.println("Student "  + student.getStudentName() + "enrolled for course" + courseName);
+    }
+
+    public void removeEnrollment(Student student) {
+        if (enrollments.isEmpty()) {
+            System.out.println("No enrollments to remove.");
+            return;
+        }
+
+        Enrollment toRemove = null;
+        for (Enrollment enrollment : enrollments) {
+            if (enrollment.getStudent().equals(student)) {
+                toRemove = enrollment;
+                break;
+            }
+        }
+        if (toRemove != null) {
+            enrollments.remove(toRemove);
+            student.removeEnrollment(toRemove);
+            System.out.println("Student " + student.getStudentName() + " removed from course.");
         }
         else {
-            System.out.println("Student is not add in this course.");
+            System.out.println("Student is not enrolled in this course.");
         }
+
+//        Simple variant, but I can have problem with multithreading (ArrayList) in future. (проблема з багатопотоківостю ArrayList'a.)
+//        for (Enrollment enrollment : enrollments) {
+//            if (enrollment.getStudent().equals(student)) {
+//                enrollments.remove(enrollment);
+//                student.removeEnrollment(enrollment);
+//                System.out.println("Student " + student.getStudentName() + " removed enrollment for course.");
+//                return;
+//            }
+//        }
+//
+//        System.out.println("Student is not enrolled in this course.");
     }
 
     public void displayStudents() {
-        if (enrolledStudents.isEmpty()) {
-            System.out.println("There are no student in this course.");
+        if (enrollments.isEmpty()) {
+            System.out.println("No students enrolled in " + courseName + ".");
             return;
         }
 
-        for (Student student : enrolledStudents) {
-            System.out.println(student.toString());
+        System.out.println("Students enrolled in " + courseName + ":");
+        for (Enrollment enrollment : enrollments) {
+            System.out.println(enrollment.getStudent().getStudentName());
         }
     }
 
