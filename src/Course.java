@@ -47,7 +47,7 @@ public class Course {
         Enrollment enrollment = new Enrollment(student, this);
         enrollments.add(enrollment);
         student.addEnrollment(enrollment);
-        System.out.println("Student "  + student.getStudentName() + "enrolled for course" + courseName);
+        System.out.println("Student "  + student.getStudentName() + " enrolled for course " + courseName);
     }
 
     public void removeEnrollment(Student student) {

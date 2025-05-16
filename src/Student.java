@@ -26,13 +26,8 @@ public class Student {
             return;
         }
 
-        if (enrollments.contains(enrollment)) {
-            System.out.println("This student is already enrolled in this course.");
-        }
-        else {
-            enrollments.add(enrollment);
-            System.out.println("Added enrollment for course " + enrollment.getCourse().getCourseName());
-        }
+        enrollments.add(enrollment);
+        System.out.println("Added enrollment for course " + enrollment.getCourse().getCourseName());
     }
 
     public void removeEnrollment(Enrollment enrollment) {

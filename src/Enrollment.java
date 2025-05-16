@@ -33,7 +33,7 @@ public class Enrollment {
             return;
         }
         grades.add(grade);
-        System.out.println("Grade " + grade + "added to list.");
+        System.out.println("Grade " + grade + " added to list.");
     }
 
     public void setFinalGrade() {
