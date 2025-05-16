@@ -17,8 +17,8 @@ public class Faculty {
     }
 
     public void addProfessor(Professor professor) {
-        if (professorList == null) {
-            System.out.println("Professor cannot be null");
+        if (professor == null) {
+            System.out.println("Professor cannot be null.");
             return;
         }
 
@@ -27,13 +27,39 @@ public class Faculty {
         }
         else {
             professorList.add(professor);
-            System.out.println("Professot " + professor.getProfessorName() + " added to the faculty.");
+            System.out.println("Professor " + professor.getProfessorName() + " added to the faculty.");
+        }
+    }
+
+    public void removeProfessor(Professor professor) {
+        if (professorList.isEmpty()) {
+            System.out.println("Professor not have been added to the faculty.");
+            return;
+        }
+        if (professorList.contains(professor)) {
+            professorList.remove(professor);
+            System.out.println("Professor removed from the faculty " + professor.getProfessorName());
+        }
+        else {
+            System.out.println("Professor not in the faculty.");
+        }
+    }
+
+    public void displayProfessorList() {
+        if (professorList.isEmpty()) {
+            System.out.println("No professors have been added to the faculty.");
+            return;
+        }
+
+        System.out.println("Professors in faculty " + facultyName + ":");
+        for (Professor professor : professorList) {
+            System.out.println("- " + professor.getProfessorName());
         }
     }
 
     public void addCourse(Course course) {
-        if (courseList == null) {
-            System.out.println("Course cannot be null");
+        if (course == null) {
+            System.out.println("Course cannot be null.");
             return;
         }
 
@@ -46,5 +72,30 @@ public class Faculty {
         }
     }
 
+    public void removeCourse(Course course) {
+        if (courseList.isEmpty()) {
+            System.out.println("Course not have been added to the faculty.");
+            return;
+        }
 
+        if (courseList.contains(course)) {
+            courseList.remove(course);
+            System.out.println("Course removed from the faculty " + course.getCourseName());
+        }
+        else {
+            System.out.println("Course not in the faculty.");
+        }
+    }
+
+    public void displayCourseList() {
+        if (courseList.isEmpty()) {
+            System.out.println("No course have been added to the faculty.");
+            return;
+        }
+
+        System.out.println("Course in faculty " + facultyName + ":");
+        for (Course course : courseList) {
+            System.out.println("- " + course.getCourseName());
+        }
+    }
 }

@@ -16,7 +16,7 @@ public class Professor {
 
     public void addCourse(Course course) {
         if (course == null) {
-            System.out.println("Course cannot be null");
+            System.out.println("Course cannot be null.");
             return;
         }
 

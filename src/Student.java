@@ -22,12 +22,12 @@ public class Student {
 
     public void addEnrollment(Enrollment enrollment) {
         if (enrollment == null) {
-            System.out.println("Enrollement cannot be null");
+            System.out.println("Enrollement cannot be null.");
             return;
         }
 
         if (enrollments.contains(enrollment)) {
-            System.out.println("This student is already enrolled in this course");
+            System.out.println("This student is already enrolled in this course.");
         }
         else {
             enrollments.add(enrollment);
@@ -37,7 +37,7 @@ public class Student {
 
     public void removeEnrollment(Enrollment enrollment) {
         if (enrollment == null) {
-            System.out.println("Enrollement cannot be null");
+            System.out.println("Enrollement cannot be null.");
             return;
         }
 
@@ -46,7 +46,7 @@ public class Student {
             System.out.println("Removed enrollment for course " + enrollment.getCourse().getCourseName());
         }
         else {
-            System.out.println("This student is not enrolled in this course");
+            System.out.println("This student is not enrolled in this course.");
         }
     }
 

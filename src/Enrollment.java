@@ -29,7 +29,7 @@ public class Enrollment {
     public void addGrade (double grade) {
         if (grade < 0.0 || grade > 100.0) {
 //            throw new IllegalArgumentException("Grade must be between 0.0 and 100.0");
-            System.out.println("Grade must be between 0.0 and 100.0");
+            System.out.println("Grade must be between 0.0 and 100.0.");
             return;
         }
         grades.add(grade);
