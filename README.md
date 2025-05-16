@@ -1,12 +1,12 @@
 😊 University Management System
 
 Struktura systemu(polish):
-University – reprezentuje uniwersytet (nazwa, lista wydziałów).
-Faculty – reprezentuje wydział (nazwa, lista profesorów i kursów).
-Professor – reprezentuje profesora (imię, lista prowadzonych kursów).
-Student – reprezentuje studenta (imię, numer indeksu, lista zapisanych kursów).
-Course – reprezentuje kurs (nazwa, prowadzący, maksymalna liczba studentów).
-Enrollment – zapis studenta na kurs (student, kurs, ocena końcowa).
+  University – reprezentuje uniwersytet (nazwa, lista wydziałów).
+  Faculty – reprezentuje wydział (nazwa, lista profesorów i kursów).
+  Professor – reprezentuje profesora (imię, lista prowadzonych kursów).
+  Student – reprezentuje studenta (imię, numer indeksu, lista zapisanych kursów).
+  Course – reprezentuje kurs (nazwa, prowadzący, maksymalna liczba studentów).
+  Enrollment – zapis studenta na kurs (student, kurs, ocena końcowa).
 
 Funkcjonalności:
 - Dodawanie wydziałów do uniwersytetu
@@ -24,12 +24,12 @@ Funkcjonalności:
 - Dodanie walidacji id studenta i dodanie id dla professorów + walidacja.
 
 Structura system(english):
-University – Represents a university (name, list of faculties).
-Faculty – Represents a faculty (name, list of professors and courses).
-Professor – Represents a professor (name, list of taught courses).
-Student – Represents a student (name, student ID number, list of enrolled courses).
-Course – Represents a course (name, professor, maximum number of students).
-Enrollment – Represents a student's enrollment in a course (student, course, final grade).
+  University – Represents a university (name, list of faculties).
+  Faculty – Represents a faculty (name, list of professors and courses).
+  Professor – Represents a professor (name, list of taught courses).
+  Student – Represents a student (name, student ID number, list of enrolled courses).
+  Course – Represents a course (name, professor, maximum number of students).
+  Enrollment – Represents a student's enrollment in a course (student, course, final grade).
 
 Functionality:
 - Adding faculties to the university
